@@ -1,0 +1,32 @@
+{
+  "name": "workout-generator",
+  "version": "1.0.0",
+  "description": "generate random workout",
+  "main": "index.js",
+  "scripts": {
+    "start": "node startup.js",
+    "test": "testcheck"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asenvolev/Node.JS-Server.git"
+  },
+  "keywords": [
+    "workout",
+    "train",
+    "fitness",
+    "sport",
+    "node.js",
+    "server"
+  ],
+  "author": "Asen Volev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asenvolev/Node.JS-Server/issues"
+  },
+  "homepage": "https://github.com/asenvolev/Node.JS-Server#readme",
+  "dependencies": {
+    "http": "0.0.1-security",
+    "http-server": "^0.12.3"
+  }
+}
