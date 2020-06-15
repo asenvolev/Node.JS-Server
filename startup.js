@@ -1,8 +1,10 @@
-const http = require("http")
+const http = require("http");
+const stream = require('fs');
+const port = 3000;
+const hostname = 'localhost';
 
-http.createServer((req,res) =>{
-    res.write('Welcome to the automatic workout generator');
-    res.end();
-}).listen(4000);
+const server = require('./route.js');
 
-console.log("server is up and running on port 4000");
+server.listen(port);
+
+console.log(`Server running at http://${hostname}:${port}/`);
