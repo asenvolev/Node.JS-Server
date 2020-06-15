@@ -3,7 +3,7 @@ const stream = require('fs');
 const port = 3000;
 const hostname = 'localhost';
 
-const server = require('./route.js');
+const server = require('./views/route.js');
 
 server.listen(port);
 

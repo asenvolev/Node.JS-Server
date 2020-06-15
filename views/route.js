@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 
 module.exports = http.createServer((req, res) => {
-    var workouts = require('./WorkoutController.js');
+    var workouts = require('../controllers/WorkoutController.js');
     const reqUrl =  url.parse(req.url, true);
     
 // GET endpoint
