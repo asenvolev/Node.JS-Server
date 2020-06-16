@@ -1,9 +1,9 @@
 const http = require("http");
-const stream = require('fs');
+const routeHandler = require('./routeHandler');
 const port = 3000;
 const hostname = 'localhost';
 
-const server = require('./views/route.js');
+const server = http.createServer(routeHandler)
 
 server.listen(port);
 
