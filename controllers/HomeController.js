@@ -1,6 +1,6 @@
 const utils = require('../utilities');
 const mongo = require('../mongoUtills');
-const SimpleModel = require('../models/SimpleModel');
+const SimpleModel = require('../models/SimpleModel').SimpleModel;
 
 const actions = {
   'GET': async (request, response) => {
@@ -11,13 +11,15 @@ const actions = {
     }
     let count = await messages.find().count();
     if (count == 0) {
-      let student = new SimpleModel("Hello World");
-      await db.collection('messages').insertOne(student);
+      let msg = new SimpleModel("Hello World");
+      await db.collection('messages').insertOne(msg);
     }
-    const messageToRender = await messages.find().toArray();
+    const result = await messages.find().toArray();
+    var messageToRender = result[0].message;
     console.log(messageToRender);
-    utils.sendResponse(response, messageToRender.toString(), 200, {'Content-Type': 'text/plain'});
+    utils.sendResponse(response, messageToRender, 200, {'Content-Type': 'text/plain'});
   },
+  
   'POST': (request, response) => {
     utils.collectData(request, (formattedData) => {
 
@@ -27,8 +29,8 @@ const actions = {
   }
 };
 
-module.exports = (request, response) => {   //TO DO this restricts a contoroller to have up to one function of every request method. Should be extended or refactored.
-    var action = actions[request.method];
+module.exports = (request, response) => {   //TO DO this restricts a contoroller to have up to one function of every request method.
+    var action = actions[request.method];   // You should create a service of methods for each request method.
     if (action) {
       action(request, response);
     } else {
